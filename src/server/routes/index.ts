@@ -1,12 +1,18 @@
-import { Router } from 'express';
-import {StatusCodes} from 'http-status-codes';
+import { Router, json } from 'express';
+import { CampaignsController } from './../controllers';
 
 const router = Router();
 
-router.get('/', (req, res) => {
-  return res.send('Sucess GET');
+router.use(json());
 
+router.get('/', (req, res) => {
+  return res.send('Success GET');
 });
 
 
-export {router};
+router.get('/campaigns', (req, res) => {
+});
+
+router.post('/campaigns', CampaignsController.create);
+
+export { router };
